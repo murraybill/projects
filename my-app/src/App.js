@@ -10,7 +10,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Voscak
+          Voscak.de
         </a>
       </header>
     </div>
