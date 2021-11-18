@@ -9,6 +9,6 @@ const todo: Todo = {
 }
 
 
-let text = "Hallo Welt";
+let text = "Mama la pinga";
 
 console.log(text);
