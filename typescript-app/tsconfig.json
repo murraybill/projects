@@ -5,6 +5,7 @@
     "esModuleInterop": true,
     "lib": ["DOM", "ESNext"],
     "module": "CommonJS",
+    "rootDirs": ["src"],
     "outDir": "build",
     "resolveJsonModule": true,
     "strict": true,

@@ -1,14 +1,22 @@
-interface Todo{
+import {v4 } from 'uuid';
+
+const uuid = v4();
+console.log(uuid);
+
+type Status = "open" | 'done' | 'discarted';
+
+interface Todo<T> {
     description: string;
-    status: string;
+    status: Status;
+    data: T;
 }
 
-const todo: Todo = {
+interface Metadata {
+    assignee: string;
+}
+const todo: Todo<Metadata> = {
     description: "TypeScript lernen",
     status: "open",
+    data: { assignee: "Hans Clarin" }
+
 }
-
-
-let text = "Mama la pinga";
-
-console.log(text);
