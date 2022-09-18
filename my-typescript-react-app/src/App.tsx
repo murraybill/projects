@@ -5,8 +5,16 @@ import DataGridDemo from './datagrid';
 import MetMuseumRestClient from './MetMuseumRestClient';
 
 
+interface MuseumObject {
+  objectIds: string[];
+  total: number;
+}
+
+
 export default class App extends Component<unknown, unknown> {
   private metMuseumRestClient: MetMuseumRestClient;
+
+  public metMuseumObjects: MuseumObject;
 
   constructor(props) {
     super(props);
@@ -17,11 +25,13 @@ export default class App extends Component<unknown, unknown> {
     this.metMuseumRestClient = new MetMuseumRestClient(
     );
 
+
+
     this.metMuseumRestClient
       .getObjectIds()
       .then((response) => response.json())
       .then((metMuseumResponseJSON) => {
-        console.log(metMuseumResponseJSON)
+        this.metMuseumObjects = metMuseumResponseJSON;
       })
       .catch((e) => {
         // eslint-disable-next-line no-console
@@ -43,7 +53,7 @@ export default class App extends Component<unknown, unknown> {
           voscak.de
         </a>
 
-        <DataGridDemo></DataGridDemo>
+
       </header>
     </div>
   }
