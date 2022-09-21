@@ -9,3 +9,6 @@ function handler(_req: Request, connInfo: ConnInfo) {
 }
 
 serve(handler);
+
+
+console.log("a console log too");
