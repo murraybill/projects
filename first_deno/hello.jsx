@@ -6,7 +6,6 @@
 
 import { serve } from "https://deno.land/std@0.140.0/http/server.ts";
 import { h, renderSSR } from "https://deno.land/x/nano_jsx@v0.0.20/mod.ts";
-import {getIPAdr } from "./client_server.ts";
 
 function App() {
   return (
@@ -23,8 +22,7 @@ function App() {
 
 function handler(req) {
   const html = renderSSR(<App />);
-  const ip = getIPAdr();
-  return new Response(ip, html, {
+  return new Response(html, {
     headers: {
       "content-type": "text/html",
     },
