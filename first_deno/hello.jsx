@@ -14,7 +14,10 @@ function App() {
         <title>Hello from murraybill</title>
       </head>
       <body>
+        <div>
         <h1>Hello Murraybill</h1>
+        <h2>Current time: {new Date().toLocaleString()}</h2>       
+        </div>
       </body>
     </html>
   );
