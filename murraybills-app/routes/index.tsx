@@ -1,4 +1,3 @@
-import Counter from "../islands/Counter.tsx";
 
 export default function Home() {
   return (
@@ -8,11 +7,12 @@ export default function Home() {
         class="w-32 h-32"
         alt="the fresh logo: a sliced lemon dripping with juice"
       />
-      <p class="my-6">
-        Welcome to `fresh`. Try updating this message in the ./routes/index.tsx
-        file, and refresh. 123
-      </p>
-      <Counter start={3} />
+      <h2>Current time: {new Date().toLocaleString()}</h2>
+      <img src="/example_pic.jpeg"
+        class="w-80"
+        alt=""
+      />
+    
     </div>
   );
 }
