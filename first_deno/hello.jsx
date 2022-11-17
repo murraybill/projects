@@ -24,6 +24,7 @@ function App() {
 }
 
 function handler(req) {
+
   const html = renderSSR(<App />);
   return new Response(html, {
     headers: {
