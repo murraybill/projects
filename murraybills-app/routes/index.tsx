@@ -7,8 +7,8 @@ export default function home() {
   return (
       <>
       <Header/>
-      <div class="p-4 mx-auto max-w-screen-md">
-      <Counter start={0}/>
+      <div class="bg-white flex flex-col md:flex-row w-full max-w-screen-lg gap-8 md:gap-16 px-8 py-8 text-sm bg-lime-300">
+      <Counter start={0}/>     
       </div>
       <ImageExample/>      
       <Footer/>      

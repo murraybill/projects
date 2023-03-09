@@ -6,7 +6,7 @@ export default function AboutPage() {
   return (
     <>
       <Header />
-      <div class="p-4 mx-auto max-w-screen-md">       
+      <div class="bg-white md:flex-row w-full max-w-screen-lg gap-8 md:gap-16 px-8 py-8 text-sm ">       
         <p>This is the about page.</p>
       </div>
 
