@@ -35,7 +35,8 @@ export default function Page({ data }: PageProps<Data>) {
           <input
             class="bg-indigo-100 border-2"
             type="text"
-            name="q"            
+            name="q"
+            disabled            
             value={query}
           />
           <p class="pt-6">
