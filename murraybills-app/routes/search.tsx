@@ -18,8 +18,8 @@ export const handler: Handlers<Data> = {
     const query = url.searchParams.get("q") || "";
     const results = NAMES.filter((name) => name.includes(query));
 
-    if(query.length >0)
-      writeJson("searchString.json",query);
+    //if(query.length >0)
+      //writeJson("searchString.json",query);
     return ctx.render({ results, query });
   },
 };

@@ -1,0 +1,36 @@
+<head>
+    <style>
+    .intro {
+      background-color: yellow;
+    }
+    .test {
+      position:fixed;
+    }
+    </style>
+     <script>
+    
+    
+    var elems = document.body.getElementsByTagName("*");
+    var len = elems.length
+    
+    for (var i=0;i<len;i++) {
+    
+        if (window.getComputedStyle(elems[i],null).getPropertyValue('position') == 'fixed') {
+            console.log(elems[i])
+        }
+    
+    }
+        
+       
+        
+      </script>
+     
+    </head>
+    <body class="intro" >
+      <h1 class="test">
+      Bla
+      </h1>
+    
+     
+    
+    </body>
