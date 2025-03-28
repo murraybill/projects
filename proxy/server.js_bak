@@ -1,0 +1,118 @@
+const express = require('express');
+const cors = require('cors');
+const hosts = require("./public/hosts.json");
+// you can set the port here!
+const PROXY_PORT = 8888;
+const PROXY_HOST = "localhost";
+
+const TARGET_URL = "http://tsg-oberrad-tt.de/"
+
+const app = express();
+
+app.use(cors());
+//app.use(express.static('public'));
+
+const http = require('http');
+const https = require('https');
+const httpProxy = require("http-proxy");
+
+var options = {
+    //xfwd: true,
+    //followRedirects: true,
+    changeOrigin: true,
+    target: {
+        http: true,
+        https:true
+    }
+}
+
+const proxy = httpProxy.createProxyServer(options);
+
+proxy.on('error', (e) => {
+
+    console.log(e);
+    
+  });
+
+
+// Define your custom logic to determine which requests to proxy
+const shouldProxyRequest = (req) => {
+
+    const requestedHOST = req.hostname;
+    console.log("Requested HOST:" + requestedHOST);
+    //console.log(hosts)
+    let hostsAsString = JSON.stringify(hosts);
+    //console.log(hostsAsString)
+    //let filteredURL = hosts.find(item => item.url === requestedURL);
+    //let foundURL = JSON.stringify(filteredURL);
+    //console.log("found in hosts.json:"+foundURL);
+    if (hostsAsString.includes(requestedHOST)) {
+        console.log("found host:" + requestedHOST);
+        return true;
+    }
+
+    return false;
+
+};
+
+// Info GET endpoint
+app.get('/info', (req, res, next) => {
+    res.send('This is a proxy service which proxies to:'+PROXY_HOST+":"+PROXY_PORT);
+});
+
+
+
+// Custom middleware
+app.use((req, res) => {
+
+    console.log(req.url);
+
+    if (shouldProxyRequest(req)) {        
+        proxy.web(req, res, { target: TARGET_URL, headers: req.headers });        
+    } else {
+        console.log("pass through: " + req.url);
+        const optionsPass = {
+            host: req.hostname, // Replace with the target host
+            port: req.port, // Default HTTPS port
+            path: req.path, // Replace with the specific API path
+            method: req.method, // HTTP method (GET, POST, etc.)            
+        };
+
+        if (req.protocol == "http") {
+           
+            let receivedData = Buffer.alloc(0);
+
+            const reqNew = http.request(optionsPass, (resNew) => {
+                console.log('Response status code:', resNew.statusCode);
+                // Handle the response data here
+                resNew.on('data', (chunk) => {
+                    receivedData = Buffer.concat([receivedData, chunk]);
+                    //console.log('Received data:', chunk.toString());
+
+                });
+
+                resNew.on('end', () => {
+                    // Now 'receivedData' contains the complete data
+                    // Send it back to the client or perform further processing
+                    //console.log('Complete data received:', receivedData.toString('utf-8'));
+                    res.set('Content-Type', 'text/html')
+                    res.send(receivedData.toString('utf-8'));
+
+                });
+            });
+
+            reqNew.on('error', (error) => {
+                console.error('Error making request:', error);
+            });
+            // Send the request
+            reqNew.end();
+
+        }
+
+    }
+});
+
+// Listen on a specific port
+app.listen(PROXY_PORT, () => {
+    console.log("listening on port " + PROXY_PORT);
+});

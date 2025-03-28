@@ -1,0 +1,83 @@
+[
+    {
+        "host": "banking.local.commerzbank.com"
+    },
+    {
+        "host": "banking.local.commerzbank.de"
+    },
+    {
+        "host": "www.local.commerzbank.com"
+    },
+    {
+        "host": "www.local.commerzbank.de"
+    },
+    {
+        "host": "www.local.commerzbanking.de"
+    },
+    {
+        "host": "kunden.local.commerzbank.com"
+    },
+    {
+        "host": "kunden.local.commerzbank.de"
+    },
+    {
+        "host": "kunden.local.commerzbanking.de"
+    },
+    {
+        "host": "app.local.commerzbank.com"
+    },
+    {
+        "host": "app.local.commerzbank.de"
+    },
+    {
+        "host": "app.kunden.local.commerzbanking.de"
+    },
+    {
+        "host": "cbportal.local.commerzbank.com"
+    },
+    {
+        "host": "cbportal.local.commerzbank.de"
+    },
+    {
+        "host": "kunden.relaunch.local.commerzbank.com"
+    },
+    {
+        "host": "kunden.relaunch.local.commerzbank.de"
+    },
+    {
+        "host": "www.relaunch.local.commerzbank.com"
+    },
+    {
+        "host": "www.relaunch.local.commerzbank.de"
+    },
+    {
+        "host": "kundencenter.local.commerzbank.de"
+    },
+    {
+        "host": "kundencenter.local.commerzbank.com"
+    },
+    {
+        "host": "kundencenter.local.intranet.commerzbank.de"
+    },
+    {
+        "host": "kundencenter.local.intranet.commerzbank.com"
+    },
+    {
+        "host": "fkbanking.local.intranet.commerzbank.com"
+    },
+    {
+        "host": "fkbanking.local.intranet.commerzbank.de"
+    },
+    {
+        "host": "accesstoaccount.local.commerzbank.de"
+    },
+    {
+        "host": "accesstoaccount.local.commerzbank.com"
+    },
+    {
+        "host": "kundenzugang.local.commerzbank.de"
+    },
+    {
+        "host": "kundenzugang.local.commerzbank.com"
+    }
+]

@@ -1,0 +1,15 @@
+{
+    "name": "ccs-mock-cif-proxy",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "start": "node server.js ",
+        "start:debug": "node --inspect --inspect-brk server.js "
+    },
+    "dependencies": {
+        "@fastify/reply-from": "^9.8.0",
+        "fastify": "^4.27.0",
+        "http-proxy": "1.18.1"
+    }
+}
