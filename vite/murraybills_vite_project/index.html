@@ -16,23 +16,17 @@
       font-size: 50px;
     }
 
-    section {
-      display: -webkit-flex;
-      display: flex;
-    }
-
     nav {
       -webkit-flex: 1;
       -ms-flex: 1;
       flex: 1;
       background: black;
-      padding-top: 100px;
+      padding-top: 80px;
     }
   </style>
 </head>
 
 <body style="background-color:#000000;  vertical-align: middle;">
-  <section>
     <nav>
       <div style="overflow-x:auto;">
         <table id="myTable">
@@ -56,16 +50,14 @@
 
       let index = 0;
       let color = "white";
-      let cellPadding = 0;
-      let reverse = false;
-
+     
       function addPaddingTop(index) {
-        document.querySelectorAll('#myTable tr:first-child > td')[index].style.paddingBottom = '20px';
+        document.querySelectorAll('#myTable tr:first-child > td')[index].style.paddingTop = '80px';
+        
       }
 
       function removePaddingTop(index) {
-        if (index >= 0)
-          document.querySelectorAll('#myTable tr:first-child > td')[index].style.paddingBottom = '0px';
+          document.querySelectorAll('#myTable tr:first-child > td')[index].style.paddingTop = '0px';
       }
 
       var x = setInterval(function () {
@@ -80,31 +72,27 @@
         loopThroughTable(color)
         index++;
 
+
         if (index == 10) {
           index = 0;
           var randomColor = Math.floor(Math.random() * 16777215).toString(16);
-          while(randomColor === '000000' || ("#"+randomColor) === color) {
-            //console.log("calculate color again");
+          while(randomColor === '000000' || ("#"+randomColor) === color) {            
             randomColor = Math.floor(Math.random() * 16777215).toString(16); 
           }          
-          color = "#" + randomColor;
-          //console.log(color);
+          color = "#" + randomColor;          
         }
 
-      }, 200);
+      }, 400);
 
       function loopThroughTable(color) {
         let table = document.getElementById("myTable");
         for (let i = 0; i < table.rows.length; i++) {
           let row = table.rows[i];
-          for (let j = 0; j < row.cells.length; j++) {
-            const tableCell = row.cells[index];
-            tableCell.style.color = color;            
+          for (let j = 0; j < row.cells.length; j++) {            
+            row.cells[index].style.color = color;            
           }
         }
       }
     </script>
-
 </body>
-
 </html>
