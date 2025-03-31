@@ -1,13 +1,110 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    table {
+      margin-left: auto;
+      margin-right: auto;
+      border: 0;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    td {
+      color: black;
+      text-align: center;
+      font-size: 50px;
+    }
+
+    section {
+      display: -webkit-flex;
+      display: flex;
+    }
+
+    nav {
+      -webkit-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+      background: black;
+      padding-top: 100px;
+    }
+  </style>
+</head>
+
+<body style="background-color:#000000;  vertical-align: middle;">
+  <section>
+    <nav>
+      <div style="overflow-x:auto;">
+        <table id="myTable">
+          <tr>            
+            <td><b>v</b></td>
+            <td><b>o</b></td>
+            <td><b>s</b></td>
+            <td><b>c</b></td>
+            <td><b>a</b></td>
+            <td><b>k</b></td>
+            <td><b>.</b></td>
+            <td><b>d</b></td>
+            <td><b>e</b></td>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+      </div>
+    </nav>
+
+    <script>
+
+      let index = 0;
+      let color = "white";
+      let cellPadding = 0;
+      let reverse = false;
+
+      function addPaddingTop(index) {
+        document.querySelectorAll('#myTable tr:first-child > td')[index].style.paddingBottom = '20px';
+      }
+
+      function removePaddingTop(index) {
+        if (index >= 0)
+          document.querySelectorAll('#myTable tr:first-child > td')[index].style.paddingBottom = '0px';
+      }
+
+      var x = setInterval(function () {
+
+        let table = document.getElementById("myTable");
+
+        addPaddingTop(index);
+
+        if (index - 1 >= 0 && index - 1 < 11)
+          removePaddingTop(index - 1);
+
+        loopThroughTable(color)
+        index++;
+
+        if (index == 10) {
+          index = 0;
+          var randomColor = Math.floor(Math.random() * 16777215).toString(16);
+          while(randomColor === '000000' || ("#"+randomColor) === color) {
+            //console.log("calculate color again");
+            randomColor = Math.floor(Math.random() * 16777215).toString(16); 
+          }          
+          color = "#" + randomColor;
+          //console.log(color);
+        }
+
+      }, 200);
+
+      function loopThroughTable(color) {
+        let table = document.getElementById("myTable");
+        for (let i = 0; i < table.rows.length; i++) {
+          let row = table.rows[i];
+          for (let j = 0; j < row.cells.length; j++) {
+            const tableCell = row.cells[index];
+            tableCell.style.color = color;            
+          }
+        }
+      }
+    </script>
+
+</body>
+
 </html>
